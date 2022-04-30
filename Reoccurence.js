@@ -11,39 +11,21 @@
 let Reoccurence = function (input) {
 
     var lowercase = input.toLowerCase();
-    var arr = lowercase.split('');
-    var hash = new Map();
-    var result = [];
 
-    for (let i = 0; i < arr.length; i++) {
+    var maximum = 0;
 
-      if (hash.get(arr[i]) === undefined) {
+    var maximumChar = '';
 
-        hash.set(arr[i], true);
+        lowercase.split('').forEach(function(char){
 
-      } 
-      
-      if (hash.get(arr[i]) != undefined) {
+        if(lowercase.split(char).length > maximum) {
 
-        var value = hash.get(arr[i]);
+            maximum = lowercase.split(char).length;
 
-        if (value) {
-
-          hash.set(arr[i], !value);
-        }
-
-      }
-
-    }
-    hash.forEach((v, k) => {
-
-      if (!v)
-
-        result.push(k);
-
-    });
-
-    return result[0];
+            maximumChar = char;
+            }
+        });
+    return maximumChar;
 
 }
 
